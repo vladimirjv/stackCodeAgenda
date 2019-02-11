@@ -4,13 +4,6 @@
     <!-- (Optional) The Header -->
     <q-layout-header>
       <q-toolbar>
-        <!-- <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="leftDrawer = !leftDrawer"
-        /> -->
         <q-toolbar-title>
           StackCode Contacts App
           <!-- <span slot="subtitle">Subtile</span> -->
@@ -23,19 +16,19 @@
       >
         <q-route-tab
           slot="title"
+          icon="contacts"
+          to="/contacts"
+          replace
+        />
+          <!-- label="Contactos" -->
+        <q-route-tab
+          slot="title"
           default
           icon="person_add"
           to="/add"
           replace
         />
           <!-- label="Agregar" -->
-        <q-route-tab
-          slot="title"
-          icon="contacts"
-          to="/contacts"
-          replace
-        />
-          <!-- label="Contactos" -->
       </q-tabs>
     </q-layout-header>
 
