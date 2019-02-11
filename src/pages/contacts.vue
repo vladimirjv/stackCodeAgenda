@@ -14,6 +14,16 @@
           <q-item-main :label="contact.name"/>
           <q-item-side right icon="call" color="secondary" />
         </q-item>
+
+        <!-- <q-item
+          v-for="(contact, index) in contacts" :key="index"
+          :to="contact.url"
+        >
+          <q-item-side icon="person" color="primary" />
+          <q-item-main :label="contact.name"/>
+          <q-item-side right icon="call" color="secondary" />
+        </q-item> -->
+
     </q-list>
 
   </q-page>
@@ -37,8 +47,23 @@ export default {
           email:"isaac@email.com",
           url: "/contact/isaac",
         }
-      ]
+      ],
+      contactos:[]
     }
+  },
+  methods: {
+    getData(){
+      this.$axios.get('/contacts')
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
+    },
+  },
+  created() {
+    this.getData()
   },
 }
 </script>
