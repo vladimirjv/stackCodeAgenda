@@ -16,14 +16,14 @@
       >
         <q-route-tab
           slot="title"
+          default
           icon="contacts"
-          to="/contacts"
+          to="/"
           replace
         />
           <!-- label="Contactos" -->
         <q-route-tab
           slot="title"
-          default
           icon="person_add"
           to="/add"
           replace

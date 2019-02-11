@@ -12,8 +12,8 @@
           to="/"
         />
         <q-toolbar-title>
-          Header
-          <span slot="subtitle">Subtile</span>
+          Contacto
+          <!-- <span slot="subtitle">Subtile</span> -->
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
