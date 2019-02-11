@@ -1,12 +1,72 @@
 <template>
-  <q-page padding>
-    <h2>hello</h2>
+  <q-page padding class="column">
+    <!-- <h2>hello {{this.$route.params.id}}</h2> -->
+    <q-card color="teal-2" text-color="black">
+          <q-card-title>
+            <q-icon name="person" style="font-size: 5rem;"/>
+            <!-- {{this.$route.params.id}} -->
+            Contacto
+            <!-- <span slot="subtitle">Contacto</span> -->
+          </q-card-title>
+
+          <q-card-main>
+            <q-field
+              :count="18"
+            >
+              <q-input
+                v-model="nombre"
+                float-label="Nombre"
+                clearable
+              />
+            </q-field>
+            <q-field
+              :count="10"
+            >
+              <q-input
+                v-model="Phone"
+                float-label="Telefono"
+                clearable
+              />
+            </q-field>
+            <q-field
+              :count="80"
+            >
+              <q-input
+                v-model="email"
+                type="email"
+                float-label="Email"
+                clearable
+                suffix="@email.com"
+              />
+            </q-field>
+          </q-card-main>
+
+          <q-card-actions>
+            <q-btn flat>Update</q-btn>
+            <q-btn flat to="/">Cancelar</q-btn>
+          </q-card-actions>
+    </q-card>
   </q-page>
 </template>
 
 <script>
 export default {
   // name: 'PageName',
+  data() {
+    return {
+      nombre: '',
+      phone: '',
+      email: '',
+      createdDate: ''
+    }
+  },
+  methods: {
+    update(){
+    }
+  },
+  created() {
+    this.nombre=this.$route.params.id
+  },
 }
 </script>
 

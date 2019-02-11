@@ -29,13 +29,13 @@ export default {
           name:"Vladimir",
           phone:"2332122",
           email:"ivladi@email.com",
-          url: "/contacto/3",
+          url: "/contact/vladimir",
         },
         {
           name:"Isaac",
           phone:"2332122",
           email:"isaac@email.com",
-          url: "/contacto/4",
+          url: "/contact/isaac",
         }
       ]
     }
