@@ -7,7 +7,13 @@ const routes = [
       { path: '', component: () => import('pages/addContact.vue') },
       { path: 'add',component: () => import('pages/addContact.vue') },
       { path: 'contacts', component: () => import('pages/contacts.vue') },
-      { path: 'contact', component: () => import('pages/singleContact.vue') }
+    ]
+  },
+  {
+    path:'/contacto',
+    component: () => import('layouts/singleContact.vue'),
+    children: [
+      { path: '', component: () => import('pages/singleContact.vue') },
     ]
   }
 ]

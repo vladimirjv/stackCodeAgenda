@@ -6,7 +6,7 @@
       <q-list-header>
         Contactos
       </q-list-header>
-        <q-item>
+        <q-item to="/contacto">
           <q-item-side icon="person" color="primary" />
           <q-item-main label="Vladimir" />
           <q-item-side right icon="call" color="secondary" />
