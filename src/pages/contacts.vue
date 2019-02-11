@@ -1,22 +1,19 @@
 <template>
   <q-page  class="column">
     <!-- content -->
-    <q-list>
+    <q-list highlight>
 
       <q-list-header>
         Contactos
       </q-list-header>
-        <q-item to="/contacto">
+        <q-item
+          v-for="(contact, index) in contacts" :key="index"
+          :to="contact.url"
+        >
           <q-item-side icon="person" color="primary" />
-          <q-item-main label="Vladimir" />
+          <q-item-main :label="contact.name"/>
           <q-item-side right icon="call" color="secondary" />
         </q-item>
-        <q-item>
-          <q-item-side icon="person" color="primary" />
-          <q-item-main label="Isaac" />
-          <q-item-side right icon="call" color="secondary" />
-        </q-item>
-
     </q-list>
 
   </q-page>
@@ -31,12 +28,14 @@ export default {
         {
           name:"Vladimir",
           phone:"2332122",
-          email:"ivladi@email.com"
+          email:"ivladi@email.com",
+          url: "/contacto/3",
         },
         {
           name:"Isaac",
           phone:"2332122",
-          email:"isaac@email.com"
+          email:"isaac@email.com",
+          url: "/contacto/4",
         }
       ]
     }

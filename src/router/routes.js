@@ -6,15 +6,16 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/contacts.vue') },
       { path: 'add', component: () => import('pages/addContact.vue') },
+      { path: 'contact/:id', component: () => import('pages/singleContact.vue') },
     ]
   },
-  {
-    path:'/contacto',
-    component: () => import('layouts/singleContact.vue'),
-    children: [
-      { path: '', component: () => import('pages/singleContact.vue') },
-    ]
-  }
+  // {
+  //   path:'/contacto',
+  //   component: () => import('layouts/singleContact.vue'),
+  //   children: [
+  //     { path: '/:id', component: () => import('pages/singleContact.vue') },
+  //   ]
+  // }
 ]
 
 // Always leave this as last one
