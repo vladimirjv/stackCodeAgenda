@@ -13,9 +13,15 @@ export const addNotification = {
   icon: 'person_add',
   position: 'center'
 };
-
+export const deleteNotification = {
+  message: 'Contacto Eliminado',
+  timeout: 2000,
+  type: 'warning',
+  icon: 'delete',
+  position: 'center'
+};
 export const errorNotification = {
-  message: 'Error al agregar',
+  message: 'Error',
   timeout: 2000,
   type: 'negative',
   icon: 'error',
