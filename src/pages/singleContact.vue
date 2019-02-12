@@ -14,7 +14,7 @@
               :count="18"
             >
               <q-input
-                v-model="nombre"
+                v-model="name"
                 float-label="Nombre"
                 clearable
               />
@@ -23,7 +23,7 @@
               :count="10"
             >
               <q-input
-                v-model="Phone"
+                v-model="phone"
                 float-label="Telefono"
                 clearable
               />
@@ -54,18 +54,31 @@ export default {
   // name: 'PageName',
   data() {
     return {
-      nombre: '',
+      name: '',
       phone: '',
       email: '',
       createdDate: ''
     }
   },
   methods: {
+    getInfo(){
+      var self = this;
+      this.$axios.get('/contacts/'+this.$route.params.id)
+        .then(function (response) {
+          // console.log(response.data);
+          self.name=response.data['name'];
+          self.phone = response.data['phone'];
+          self.email = response.data['email'];
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
+    },
     update(){
     }
   },
   created() {
-    this.nombre=this.$route.params.id
+    this.getInfo();
   },
 }
 </script>

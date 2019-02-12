@@ -36,20 +36,6 @@ export default {
   // name: 'PageName',
   data() {
     return {
-      contacts: [
-        {
-          name:"Vladimir",
-          phone:"2332122",
-          email:"ivladi@email.com",
-          url: "/contact/vladimir",
-        },
-        {
-          name:"Isaac",
-          phone:"2332122",
-          email:"isaac@email.com",
-          url: "/contact/isaac",
-        }
-      ],
       contactos:[],
       links:[],
     }
@@ -70,7 +56,6 @@ export default {
       this.links=this.contactos.map(function(value,index,array){
         return "/contact/"+array[index]['_id'];
       })
-      console.log(this.links);
     },
     ...mapActions({
       setContacts: types.UPDATE_CONTACTOS,
@@ -83,7 +68,6 @@ export default {
   },
   created() {
     this.getData();
-
   },
 }
 </script>
