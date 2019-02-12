@@ -22,6 +22,7 @@
         <q-input
           v-model="phone"
           float-label="Telefono"
+          type="number"
           clearable
         />
       </q-field>
