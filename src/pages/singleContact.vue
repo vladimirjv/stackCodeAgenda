@@ -44,11 +44,20 @@
           <q-card-actions>
             <q-btn
               color="primary"
+              flat
               @click="update"
             >
               Update
             </q-btn>
             <q-btn flat to="/">Cancelar</q-btn>
+
+            <q-btn
+              flat
+              align="right"
+              label="Delete"
+              color="negative"
+              @click="deleteMethod"
+            />
           </q-card-actions>
     </q-card>
   </q-page>
@@ -93,6 +102,14 @@ export default {
         console.log(err);
       });
     },
+    deleteMethod(){
+      var self= this;
+      this.$axios.delete('/contacts/'+this.$route.params.id)
+        .then(function (response) {
+          self.showNotification(Notifications.deleteNotification);
+          self.$router.push('/')
+        })
+    },
     showNotification(notification){
       this.$q.notify(notification)
     },
@@ -104,4 +121,5 @@ export default {
 </script>
 
 <style>
+
 </style>
