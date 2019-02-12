@@ -88,15 +88,7 @@ export default {
     add(){
       var self=this;
       this.touch();
-      if (this.$v.name.$error) {
-        this.showNotification(Notifications.errorNotification);
-        return
-      }
-      if (this.$v.phone.$error) {
-        this.showNotification(Notifications.errorNotification);
-        return
-      }
-      if (this.$v.email.$error) {
+      if (this.$v.name.$error || this.$v.phone.$error || this.$v.email.$error) {
         this.showNotification(Notifications.errorNotification);
         return
       }

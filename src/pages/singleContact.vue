@@ -120,14 +120,6 @@ export default {
         this.showNotification(Notifications.errorNotification);
         return
       }
-      // if (this.$v.phone.$error) {
-      //   this.showNotification(Notifications.errorNotification);
-      //   return
-      // }
-      // if (this.$v.email.$error) {
-      //   this.showNotification(Notifications.errorNotification);
-      //   return
-      // }
       this.$axios.put('/contacts/'+this.$route.params.id,{
         name: this.name,
         phone: this.phone,
