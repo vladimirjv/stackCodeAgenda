@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import * as Notifications from '../assets/notifications.js'
 export default {
   // name: 'PageName',
   data() {
@@ -63,17 +64,21 @@ export default {
   },
   methods: {
     add(){
+      var self=this;
       this.$axios.post('/contacts',{
         name: this.name,
         phone: this.phone,
         email: this.email
       })
         .then(function (response) {
-          console.log('ok');
+          self.showNotification(Notifications.addNotification)
         })
         .catch(function (err) {
           console.log(err);
         })
+    },
+    showNotification(notification){
+      this.$q.notify(notification)
     },
   },
 }

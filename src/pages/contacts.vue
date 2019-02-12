@@ -21,7 +21,12 @@
         >
           <q-item-side icon="person" color="primary" />
           <q-item-main :label="contact.name"/>
-          <q-item-side right icon="call" color="secondary" />
+          <!-- <q-item-side right icon="call" color="secondary"/> -->
+          <q-item-tile
+            icon="call"
+            color="secondary"
+          >
+          </q-item-tile>
         </q-item>
 
     </q-list>
@@ -41,6 +46,9 @@ export default {
     }
   },
   methods: {
+    click(){
+      console.log('delete');
+    },
     getData(){
       var self = this;
       this.$axios.get('/contacts')

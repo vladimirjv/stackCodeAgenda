@@ -42,7 +42,12 @@
           </q-card-main>
 
           <q-card-actions>
-            <q-btn flat>Update</q-btn>
+            <q-btn
+              color="primary"
+              @click="update"
+            >
+              Update
+            </q-btn>
             <q-btn flat to="/">Cancelar</q-btn>
           </q-card-actions>
     </q-card>
@@ -50,6 +55,7 @@
 </template>
 
 <script>
+import * as Notifications from '../assets/notifications.js';
 export default {
   // name: 'PageName',
   data() {
@@ -57,7 +63,7 @@ export default {
       name: '',
       phone: '',
       email: '',
-      createdDate: ''
+      createdDate: '',
     }
   },
   methods: {
@@ -65,7 +71,6 @@ export default {
       var self = this;
       this.$axios.get('/contacts/'+this.$route.params.id)
         .then(function (response) {
-          // console.log(response.data);
           self.name=response.data['name'];
           self.phone = response.data['phone'];
           self.email = response.data['email'];
@@ -75,7 +80,22 @@ export default {
         })
     },
     update(){
-    }
+      var self = this;
+      this.$axios.put('/contacts/'+this.$route.params.id,{
+        name: this.name,
+        phone: this.phone,
+        email: this.email
+      })
+      .then(function(response){
+        self.showNotification(Notifications.updatedNotification)
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    },
+    showNotification(notification){
+      this.$q.notify(notification)
+    },
   },
   created() {
     this.getInfo();
