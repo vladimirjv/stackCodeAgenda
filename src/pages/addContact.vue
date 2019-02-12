@@ -13,6 +13,8 @@
         <q-input
           v-model="name"
           float-label="Nombre"
+          @blur="$v.name.$touch"
+          :error= "$v.name.$error"
           clearable
         />
       </q-field>
@@ -23,6 +25,8 @@
           v-model="phone"
           float-label="Telefono"
           type="number"
+          @blur="$v.phone.$touch"
+          :error="$v.phone.$error"
           clearable
         />
       </q-field>
@@ -33,6 +37,8 @@
           v-model="email"
           type="email"
           float-label="Email"
+          @blur="$v.email.$touch"
+          :error="$v.email.$error"
           clearable
           suffix="@email.com"
         />
@@ -52,7 +58,8 @@
 </template>
 
 <script>
-import * as Notifications from '../assets/notifications.js'
+import * as Notifications from '../assets/notifications.js';
+import { required, email, numeric, maxLength } from 'vuelidate/lib/validators';
 export default {
   // name: 'PageName',
   data() {
@@ -63,9 +70,36 @@ export default {
       createdDate: ''
     }
   },
+  validations: {
+    name: {
+      required,
+      maxLength: maxLength(18)
+    },
+    phone: {
+      required,
+      maxLength: maxLength(10)
+    },
+    email: {
+      required,
+      maxLength: maxLength(80)
+    }
+  },
   methods: {
     add(){
       var self=this;
+      this.touch();
+      if (this.$v.name.$error) {
+        this.showNotification(Notifications.errorNotification);
+        return
+      }
+      if (this.$v.phone.$error) {
+        this.showNotification(Notifications.errorNotification);
+        return
+      }
+      if (this.$v.email.$error) {
+        this.showNotification(Notifications.errorNotification);
+        return
+      }
       this.$axios.post('/contacts',{
         name: this.name,
         phone: this.phone,
@@ -77,6 +111,12 @@ export default {
         .catch(function (err) {
           console.log(err);
         })
+    },
+    touch(){
+      this.$v.name.$touch();
+      this.$v.phone.$touch();
+      this.$v.email.$touch();
+
     },
     showNotification(notification){
       this.$q.notify(notification)
