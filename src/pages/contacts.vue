@@ -6,15 +6,6 @@
       <q-list-header>
         Contactos
       </q-list-header>
-        <!-- <q-item
-          v-for="(contact, index) in contacts" :key="index"
-          :to="contact.url"
-        >
-          <q-item-side icon="person" color="primary" />
-          <q-item-main :label="contact.name"/>
-          <q-item-side right icon="call" color="secondary" />
-        </q-item> -->
-
         <q-item
           v-for="(contact, index) in contactos" :key="index"
           :to="links[index]"
@@ -46,9 +37,6 @@ export default {
     }
   },
   methods: {
-    click(){
-      console.log('delete');
-    },
     getData(){
       var self = this;
       this.$axios.get('/contacts')
@@ -79,8 +67,3 @@ export default {
   },
 }
 </script>
-
-<style>
-
-
-</style>
